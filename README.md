@@ -1,1 +1,5 @@
 # aws-codebuild-test
+
+![build](https://codebuild.eu-west-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiU051Z0oxM2tPU0NVd1hNYmtmcXpkVFNYb0lWdEdQY09sbUhpdkdPYXF2bHFoYjNHTFlvTUs3bTU5MjNFSjNLMUZnSVNSNTlnRGdneC9HeEgrNmZ2RjlnPSIsIml2UGFyYW1ldGVyU3BlYyI6IkFHVUhsR0sySW5rYkRGekEiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+
+A test repo for integration with an. AWS CodeBuild project

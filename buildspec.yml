@@ -1,0 +1,11 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing stuff..."
+      - echo "Done"
+  build:
+    commands:
+      - echo "Building all the things..."
+      - echo "Built"
