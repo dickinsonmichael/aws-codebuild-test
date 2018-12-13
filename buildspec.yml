@@ -5,6 +5,9 @@ phases:
     commands:
       - echo "Installing stuff..."
       - echo "Done"
+  pre_build:
+    commands:
+      - echo $CODEBUILD_WEBHOOK_TRIGGER |cut -d/ -f2
   build:
     commands:
       - echo "Building all the things..."
