@@ -6,16 +6,17 @@ phases:
       python: 3.7
   build:
     commands:
+      - git archive -o source.zip .
       - COMMIT_TYPE="$(echo "${CODEBUILD_WEBHOOK_TRIGGER}" |cut -d/ -f1)"
       - COMMIT_TARGET="$(echo "${CODEBUILD_WEBHOOK_TRIGGER}" |cut -d/ -f2)"
       - |
         if [[ "${COMMIT_TYPE}"  == "branch" ]];then
           if [[ "${COMMIT_TARGET}" != "master" ]];then
-            echo "aws codepipeline start-pipeline-execution --name dev-pipeline;"
+            echo "aws s3 cp source.zip s3://${S3_BUCKET}/dev.zip;"
           else
-            echo "aws codepipeline start-pipeline-execution --name test-pipeline;"
+            echo "aws s3 cp source.zip s3://${S3_BUCKET}/test.zip;"
           fi
         elif [[ "${COMMIT_TYPE}"  == "tag" ]];then
-          echo "aws codepipeline start-pipeline-execution --name prod-pipeline;"
+          echo "aws s3 cp source.zip s3://${S3_BUCKET}/prod.zip;"
         fi
 
