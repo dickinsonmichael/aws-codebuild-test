@@ -4,11 +4,18 @@ phases:
   install:
     runtime-versions:
       python: 3.7
-  pre_build:
-    commands:
-      - export
-      - echo $CODEBUILD_WEBHOOK_TRIGGER |cut -d/ -f2
   build:
     commands:
-      - echo "Building all the things..."
-      - echo "Built"
+      - COMMIT_TYPE="$(echo "${CODEBUILD_WEBHOOK_TRIGGER}" |cut -d/ -f1)"
+      - COMMIT_TARGET="$(echo "${CODEBUILD_WEBHOOK_TRIGGER}" |cut -d/ -f2)"
+      - |
+        if [[ "${COMMIT_TYPE}"  == "branch" ]];then
+          if [[ "${COMMIT_TARGET}" != "master" ]];then
+            echo "aws codepipeline start-pipeline-execution --name dev-pipeline;"
+          else
+            echo "aws codepipeline start-pipeline-execution --name test-pipeline;"
+          fi
+        elif [[ "${COMMIT_TYPE}"  == "tag" ]];then
+          echo "aws codepipeline start-pipeline-execution --name prod-pipeline;"
+        fi
+
