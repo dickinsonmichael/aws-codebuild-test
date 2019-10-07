@@ -7,6 +7,7 @@ phases:
       - echo "Done"
   pre_build:
     commands:
+      - export
       - echo $CODEBUILD_WEBHOOK_TRIGGER |cut -d/ -f2
   build:
     commands:
