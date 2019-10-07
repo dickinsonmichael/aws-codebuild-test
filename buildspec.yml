@@ -2,9 +2,8 @@ version: 0.2
 
 phases:
   install:
-    commands:
-      - echo "Installing stuff..."
-      - echo "Done"
+    runtime-versions:
+      python: 3.7
   pre_build:
     commands:
       - export
