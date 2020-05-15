@@ -11,7 +11,7 @@ phases:
 #      - zip -r source.zip .
       - echo "${CODEBUILD_WEBHOOK_PREV_COMMIT}"
 #      - set
-      - git diff --name-only ${CODEBUILD_WEBHOOK_PREV_COMMIT}
+      - git diff --name-only 8d38bd803c68c6519d6d8764b4cafed110934f58
 #      - COMMIT_TYPE="$(echo "${CODEBUILD_WEBHOOK_TRIGGER}" |cut -d/ -f1)"
 #      - COMMIT_TARGET="$(echo "${CODEBUILD_WEBHOOK_TRIGGER}" |cut -d/ -f2)"
 #      - |
