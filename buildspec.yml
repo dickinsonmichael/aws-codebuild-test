@@ -8,9 +8,10 @@ phases:
     commands:
       - pwd
       - ls -alh .
-      - zip -r source.zip .
+#      - zip -r source.zip .
       - echo "${CODEBUILD_WEBHOOK_PREV_COMMIT}"
-      - set
+#      - set
+      - git diff --name-only ${CODEBUILD_WEBHOOK_PREV_COMMIT}
 #      - COMMIT_TYPE="$(echo "${CODEBUILD_WEBHOOK_TRIGGER}" |cut -d/ -f1)"
 #      - COMMIT_TARGET="$(echo "${CODEBUILD_WEBHOOK_TRIGGER}" |cut -d/ -f2)"
 #      - |
