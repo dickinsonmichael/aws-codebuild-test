@@ -15,7 +15,10 @@ phases:
       - ls -lh
       - cd repo
       - for FILE in $(git diff --name-only ${CODEBUILD_WEBHOOK_PREV_COMMIT}); do
-          echo "${FILE}";
+          if [[ $FILE == exceptions* ]]; then
+            echo "Need to build file $(echo $FILE |cut -d '/' -f 2);
+          else
+            echo "Might need more work";
         done;
 #      - COMMIT_TYPE="$(echo "${CODEBUILD_WEBHOOK_TRIGGER}" |cut -d/ -f1)"
 #      - COMMIT_TARGET="$(echo "${CODEBUILD_WEBHOOK_TRIGGER}" |cut -d/ -f2)"
