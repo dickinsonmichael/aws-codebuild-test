@@ -7,11 +7,13 @@ phases:
   build:
     commands:
       - pwd
-      - ls -alh .
 #      - zip -r source.zip .
       - echo "${CODEBUILD_WEBHOOK_PREV_COMMIT}"
-      - set
-      - git clone ${CODEBUILD_SOURCE_REPO_URL}
+#      - set
+      - ls -lh
+      - git clone ${CODEBUILD_SOURCE_REPO_URL} repo
+      - ls -lh
+      - cd repo
       - git diff --name-only 8d38bd803c68c6519d6d8764b4cafed110934f58
 #      - COMMIT_TYPE="$(echo "${CODEBUILD_WEBHOOK_TRIGGER}" |cut -d/ -f1)"
 #      - COMMIT_TARGET="$(echo "${CODEBUILD_WEBHOOK_TRIGGER}" |cut -d/ -f2)"
