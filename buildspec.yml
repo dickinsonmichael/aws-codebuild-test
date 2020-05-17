@@ -11,7 +11,7 @@ phases:
 #      - zip -r source.zip .
       - echo "${CODEBUILD_WEBHOOK_PREV_COMMIT}"
       - set
-      - git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar) %G? %C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+      - git checkout ${CODEBUILD_WEBHOOK_TRIGGER}
       - git diff --name-only 8d38bd803c68c6519d6d8764b4cafed110934f58
 #      - COMMIT_TYPE="$(echo "${CODEBUILD_WEBHOOK_TRIGGER}" |cut -d/ -f1)"
 #      - COMMIT_TARGET="$(echo "${CODEBUILD_WEBHOOK_TRIGGER}" |cut -d/ -f2)"
