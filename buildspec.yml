@@ -14,7 +14,8 @@ phases:
       - git clone ${CODEBUILD_SOURCE_REPO_URL} repo
       - ls -lh
       - cd repo
-      - git diff --name-only ${CODEBUILD_WEBHOOK_PREV_COMMIT}
+      - > for FILE in $(git diff --name-only ${CODEBUILD_WEBHOOK_PREV_COMMIT});
+            echo "${FILE}"
 #      - COMMIT_TYPE="$(echo "${CODEBUILD_WEBHOOK_TRIGGER}" |cut -d/ -f1)"
 #      - COMMIT_TARGET="$(echo "${CODEBUILD_WEBHOOK_TRIGGER}" |cut -d/ -f2)"
 #      - |
