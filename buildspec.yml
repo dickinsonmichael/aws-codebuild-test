@@ -16,7 +16,7 @@ phases:
       - cd repo
       - for FILE in $(git diff --name-only ${CODEBUILD_WEBHOOK_PREV_COMMIT}); do
           if [[ $FILE == exceptions* ]]; then
-            echo "Need to build file $(echo $FILE |cut -d '/' -f 2);
+            echo "Need to build file $(echo $FILE |cut -d '/' -f 2)";
           else
             echo "Might need more work";
         done;
